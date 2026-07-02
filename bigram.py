@@ -120,8 +120,8 @@ class Block(nn.Module):
         x = x + self.ffwd(self.ln2(x))
         return x    
 
-# super simple bigram model
-class BigramLanguageModel(nn.Module):
+# super simple GPTLanguage model
+class GPTLanguageModel(nn.Module):
     def __init__(self):
         super().__init__()
         # each token directly reads off the logits for the next token from a lookup table
@@ -169,7 +169,7 @@ class BigramLanguageModel(nn.Module):
             idx = torch.cat((idx, idx_next), dim = 1) # (B, T + 1)
         return idx
     
-model = BigramLanguageModel()
+model = GPTLanguageModel()
 m = model.to(device)
 
 # create a pytorch optimizer
